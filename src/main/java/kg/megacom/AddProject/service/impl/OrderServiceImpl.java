@@ -39,7 +39,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public OrderDto update(OrderDto orderDto) {
         Order order = orderRepo.findById(orderDto.getId()).orElse(null);
-        if(order==null){
+        if (order == null) {
             throw new RuntimeException("Not found");
         }
         order = OrderMapper.INSTANCE.toOrder(orderDto);

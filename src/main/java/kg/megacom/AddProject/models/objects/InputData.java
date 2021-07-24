@@ -1,9 +1,11 @@
 package kg.megacom.AddProject.models.objects;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.util.List;
+
+//В данном классе создали переменные которые приходят с фронтэнда, которые в дальнейшем обрабатываются и сохраняются в БД
+
 @Data
 public class InputData {
 
@@ -11,7 +13,6 @@ public class InputData {
     private String name;
     private String email;
     private String phone;
-//    private int lettersAmount;
     private List<ChenalDays> chenalDays;
 
 }

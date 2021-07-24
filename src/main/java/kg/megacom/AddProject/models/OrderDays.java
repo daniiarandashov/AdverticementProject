@@ -15,12 +15,11 @@ public class OrderDays {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_days_id")
     private Long id;
+
     private Date date;
+
     @ManyToOne
     @JoinColumn(name = "order_details_id")
     private OrderDetails orderDetails;
-
-
-
 
 }

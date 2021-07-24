@@ -10,6 +10,8 @@ import java.util.List;
 
 import static kg.megacom.AddProject.Configs.Swagger2Config.CLIENTS;
 
+//В данном классе реализованны два метода:Post метод для сохранения клиента,Get метод для вывода всех клиентов
+
 @Api(tags = CLIENTS)
 @RestController
 @RequestMapping(value = "/api/v1/clients")
@@ -19,7 +21,7 @@ public class ClientsControllers {
     private ClientsService clientsService;
 
     @GetMapping("/all-clients")
-    public List<ClientsDto> findAll(){
+    public List<ClientsDto> findAll() {
         return clientsService.findAll();
     }
 

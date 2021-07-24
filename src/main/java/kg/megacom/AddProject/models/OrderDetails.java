@@ -13,6 +13,7 @@ public class OrderDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_details_id")
     private Long id;
+
     private double price;
 
     @ManyToOne(fetch = FetchType.EAGER)

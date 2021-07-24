@@ -2,6 +2,8 @@ package kg.megacom.AddProject.models.objects;
 
 import lombok.Data;
 
+//В данном классе создаются переменные которые формирют Response
+
 @Data
 public class FinalResponse {
 

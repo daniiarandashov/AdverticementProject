@@ -3,6 +3,7 @@ package kg.megacom.AddProject.models.dto;
 import lombok.Data;
 
 import javax.persistence.Column;
+
 @Data
 public class ClientsDto {
 

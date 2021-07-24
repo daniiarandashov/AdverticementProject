@@ -12,17 +12,14 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+//Настройки Swagger
 @Configuration
 @EnableSwagger2
 public class Swagger2Config {
 
     public static final String CLIENTS = "Клиенты";
     public static final String DISCOUNTS = "Скидки";
-//    public static final String FIlE = "Загрузка логотипа";
     public static final String OPERATION = "Операции";
-//    public static final String ORDER = "Заказы";
-//    public static final String ORDER_DAYS = "Количество дней";
-//    public static final String ORDER_DATAILS = "Детали заказа";
     public static final String PRICES = "Цены за символ";
     public static final String TV_CHANEL = "Каналы";
 
@@ -36,11 +33,7 @@ public class Swagger2Config {
                 .apiInfo(apiEndPointsInfo())
                 .tags(new Tag(CLIENTS, ""))
                 .tags(new Tag(DISCOUNTS, ""))
-//                .tags(new Tag(FIlE, ""))
                 .tags(new Tag(OPERATION, ""))
-//                .tags(new Tag(ORDER, ""))
-//                .tags(new Tag(ORDER_DAYS, ""))
-//                .tags(new Tag(ORDER_DATAILS, ""))
                 .tags(new Tag(PRICES, ""))
                 .tags(new Tag(TV_CHANEL, ""));
     }

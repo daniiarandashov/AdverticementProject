@@ -10,8 +10,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
-import static kg.megacom.AddProject.Configs.Swagger2Config.DISCOUNTS;
 import static kg.megacom.AddProject.Configs.Swagger2Config.TV_CHANEL;
+
+//В данном классе реализованно три Get метода которые выполняют вывод всех канлов,вывод только активных канало и поиск по id
+//один Post метод котрый выполняет сохранение каналов с привязкой логотипа канала
+//и Delete метод который дективирует канал
 
 @Api(tags = TV_CHANEL)
 @RestController
@@ -21,29 +24,28 @@ public class TvChanelControllers {
     @Autowired
     private TvChanelService tvChanelService;
 
-
     @GetMapping("/all-chanels")
     public List<TvChanelDto> showTvChanel() {
         return tvChanelService.findAll();
     }
 
     @PostMapping("/save")
-    public TvChanelDto save(@ModelAttribute TvChanelDto tvChanelDto, @RequestPart MultipartFile file){
-        return tvChanelService.save(tvChanelDto,file);
+    public TvChanelDto save(@ModelAttribute TvChanelDto tvChanelDto, @RequestPart MultipartFile file) {
+        return tvChanelService.save(tvChanelDto, file);
     }
 
     @GetMapping("/find-by-id")
-    public TvChanelDto findById(Long id){
+    public TvChanelDto findById(Long id) {
         return tvChanelService.findById(id);
     }
 
     @DeleteMapping("/delete/{id}")
-    public TvChanelDto deactivateChannel(@PathVariable Long id){
+    public TvChanelDto deactivateChannel(@PathVariable Long id) {
         return tvChanelService.deactivate(id);
     }
 
     @GetMapping("/active-channels")
-    public List<TvChanelDto> selectAllActiveChannels(){
+    public List<TvChanelDto> selectAllActiveChannels() {
         return tvChanelService.findActiveChannels();
     }
 

@@ -12,8 +12,11 @@ public interface DiscountMapper {
 
     DiscountMapper INSTANCE = Mappers.getMapper(DiscountMapper.class);
 
-    Discounts toDiscount (DiscountDto discountDto);
-    DiscountDto toDiscountDto (Discounts discounts);
-    List<Discounts> toDiscountList (List<DiscountDto> discountDtoList);
-    List<DiscountDto> toDiscountDtoList (List<Discounts> discountsList);
+    Discounts toDiscount(DiscountDto discountDto);
+
+    DiscountDto toDiscountDto(Discounts discounts);
+
+    List<Discounts> toDiscountList(List<DiscountDto> discountDtoList);
+
+    List<DiscountDto> toDiscountDtoList(List<Discounts> discountsList);
 }

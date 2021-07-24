@@ -12,8 +12,11 @@ public interface ClientsMapper {
 
     ClientsMapper INSTANCE = Mappers.getMapper(ClientsMapper.class);
 
-    Clients toClients (ClientsDto clientsDto);
-    ClientsDto toClientsDto (Clients clients);
+    Clients toClients(ClientsDto clientsDto);
+
+    ClientsDto toClientsDto(Clients clients);
+
     List<Clients> toClientsList(List<ClientsDto> clientsDtoList);
+
     List<ClientsDto> toClientsDtoList(List<Clients> clientsList);
 }

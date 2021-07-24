@@ -18,6 +18,7 @@ public class Order {
     private String text;
 
     private int amount;
+
     @Column(name = "status")
     private boolean paymentStatus;
 

@@ -12,7 +12,7 @@ public interface ClientsService {
 
     ClientsDto save(ClientsDto clientsDto);
 
-    ClientsDto findById (Long id);
+    ClientsDto findById(Long id);
 
     ClientsDto findByPhone(String phone);
 

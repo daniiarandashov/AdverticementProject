@@ -10,10 +10,9 @@ import java.util.Date;
 public class OrderDaysDto {
 
     private Long id;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private Date date;
     private OrderDetailsDto orderDetails;
-
 
 
 }

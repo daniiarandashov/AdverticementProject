@@ -12,9 +12,12 @@ public interface OrderDetailsMapper {
 
     OrderDetailsMapper INSTANCE = Mappers.getMapper(OrderDetailsMapper.class);
 
-    OrderDetails toOrderDetails (OrderDetailsDto orderDetailsDto);
-    OrderDetailsDto toOrderDetailsDto (OrderDetails orderDetails);
-    List<OrderDetails> toOrderDetailsList (List<OrderDetailsDto> orderDetailsDtoList);
-    List<OrderDetailsDto> toOrderDetailsDtoList (List<OrderDetails> orderDetailsList);
+    OrderDetails toOrderDetails(OrderDetailsDto orderDetailsDto);
+
+    OrderDetailsDto toOrderDetailsDto(OrderDetails orderDetails);
+
+    List<OrderDetails> toOrderDetailsList(List<OrderDetailsDto> orderDetailsDtoList);
+
+    List<OrderDetailsDto> toOrderDetailsDtoList(List<OrderDetails> orderDetailsList);
 
 }

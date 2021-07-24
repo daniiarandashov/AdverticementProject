@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static kg.megacom.AddProject.Configs.Swagger2Config.CLIENTS;
 import static kg.megacom.AddProject.Configs.Swagger2Config.DISCOUNTS;
+
+//В данном классе реализованно три метода по сохранению,обнавлению и вывода объекта Discount
 
 @Api(tags = DISCOUNTS)
 @RestController
@@ -19,17 +20,17 @@ public class DiscountControllers {
     private DiscountsService discountsService;
 
     @GetMapping("/all-discounts")
-    public List<DiscountDto> findAll(){
+    public List<DiscountDto> findAll() {
         return discountsService.findAll();
     }
 
     @PostMapping("/save")
-    public DiscountDto save(@RequestBody DiscountDto discountDto){
+    public DiscountDto save(@RequestBody DiscountDto discountDto) {
         return discountsService.save(discountDto);
     }
 
     @PutMapping("/update")
-    public DiscountDto update(@RequestBody DiscountDto discountDto){
+    public DiscountDto update(@RequestBody DiscountDto discountDto) {
         return discountsService.update(discountDto);
     }
 }

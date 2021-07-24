@@ -15,8 +15,11 @@ public interface TvChanelMapper {
 
     TvChanelMapper INSTANCE = Mappers.getMapper(TvChanelMapper.class);
 
-    TvChanel toTvChanel (TvChanelDto tvChanelDto);
-    TvChanelDto toTvChanelDto (TvChanel tvChanel);
-    List<TvChanel> toTvChanelList (List<TvChanelDto> tvChanelDtoList);
-    List<TvChanelDto> toTvChanelDtoList (List<TvChanel> tvChanelList);
+    TvChanel toTvChanel(TvChanelDto tvChanelDto);
+
+    TvChanelDto toTvChanelDto(TvChanel tvChanel);
+
+    List<TvChanel> toTvChanelList(List<TvChanelDto> tvChanelDtoList);
+
+    List<TvChanelDto> toTvChanelDtoList(List<TvChanel> tvChanelList);
 }

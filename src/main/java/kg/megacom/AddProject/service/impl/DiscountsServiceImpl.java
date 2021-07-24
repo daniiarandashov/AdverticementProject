@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class DiscountsServiceImpl implements DiscountsService {
 
@@ -49,7 +50,7 @@ public class DiscountsServiceImpl implements DiscountsService {
         discountDto1.setDiscount(discountDto.getDiscount());
         discountDto1.setEnd_date(discountDto.getEnd_date());
         discountDto1.setStart_date(discountDto.getStart_date());
-        if(discounts == null){
+        if (discounts == null) {
             throw new RuntimeException("Not found");
         }
         discounts = discountsRepo.save(DiscountMapper.INSTANCE.toDiscount(discountDto1));

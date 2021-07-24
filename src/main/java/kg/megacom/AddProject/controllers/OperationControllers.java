@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import static kg.megacom.AddProject.Configs.Swagger2Config.OPERATION;
 
+//В данном классе реализован метод по сохранению объекта InputData.Здесь мы принимаем основные данные которые приходя с фронтэнда.
+
 @Api(tags = OPERATION)
 @RestController
 @RequestMapping(value = "/api/v1/operation")

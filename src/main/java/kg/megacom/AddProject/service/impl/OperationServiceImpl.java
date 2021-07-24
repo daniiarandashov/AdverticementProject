@@ -13,6 +13,8 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 import java.util.List;
 
+//В этом классе реализуется оснвной функционал нашей программы
+
 @Service
 public class OperationServiceImpl implements OperationService {
 
@@ -37,6 +39,8 @@ public class OperationServiceImpl implements OperationService {
 
         FinalResponse finalResponse = new FinalResponse();
 
+        //Прием и сохранение нового объекта ClientsDto который приходит с InputData
+
         ClientsDto clientsDto = clientsService.findByPhone(inputData.getPhone());
         if (clientsDto == null) {
             clientsDto = new ClientsDto();
@@ -45,6 +49,8 @@ public class OperationServiceImpl implements OperationService {
             clientsDto.setPhone(inputData.getPhone());
             clientsDto = clientsService.save(clientsDto);
         }
+
+        //Прием и сохранение нового объекта OrderDto который приходит с InputData
 
         OrderDto orderDto = new OrderDto();
         String textLength = inputData.getText().replaceAll("\\s+", "");
@@ -55,6 +61,8 @@ public class OperationServiceImpl implements OperationService {
         OrderDto orderDto1 = orderService.save(orderDto);
 
         double totalSum;
+
+        //В блоке ниже проводится подсчет суммы за объявление по одному каналу со скидко и без скидки с далнейшим сохранением в БД
 
         List<ChenalDays> chenalDays = inputData.getChenalDays();
         chenalDays.stream()
@@ -86,27 +94,39 @@ public class OperationServiceImpl implements OperationService {
                         orderDetailsDto1 = orderDetailsService.save(orderDetailsDto);
                     }
 
+                    //Сохранение дней и OrderDetails в таблицу OrderDays
+
                     List<Date> date = x.getDays();
                     date.stream().forEach(d -> {
                         orderDaysService.save1(d, orderDetailsDto1);
                     });
                 });
 
+        //Вычисление общей суммы объявлений по всем каналам
+
         List<OrderDetailsDto> orderDetailsDtoList = orderDetailsService.findAllByOrder(orderDto1);
         totalSum = orderDetailsDtoList.stream().mapToDouble(x -> x.getPrice()).sum();
 
+        //Вызов метода генерации кода оплаты и сохранение его в БД
+
         String code = generateCode();
+        orderDto1.setCode(code);
+        orderDto1.setPaymentStatus(true);
+        orderService.update(orderDto1);
+
+        //Реализация отправки письма с данными его объявления на почту клиента
 
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom("daniiarandashov@gmail.com");
         message.setTo(inputData.getEmail());
         message.setSubject("Оповещение!");
-        message.setText("Приветствуем " + inputData.getName() + "!!!" + "\nТекст вашего объявления : " + inputData.getText() + "\nСумма к оплате : " + totalSum + "сом" + "\nВаш код оплаты : " + code);
+        message.setText("Приветствуем " + inputData.getName() + "!!!" +
+                "\nТекст вашего объявления : " + inputData.getText() +
+                "\nСумма к оплате : " + totalSum + "сом" +
+                "\nВаш код оплаты : " + code);
         emailSender.send(message);
 
-        orderDto1.setCode(code);
-        orderDto1.setPaymentStatus(true);
-        orderService.update(orderDto1);
+        //Форимруем Response
 
         finalResponse.setMessage("Успешно соханено");
         finalResponse.setStatus(1);
@@ -115,6 +135,8 @@ public class OperationServiceImpl implements OperationService {
 
         return finalResponse;
     }
+
+    //Метод генерации кода оплаты
 
     public String generateCode() {
         int randomPIN = (int) (Math.random() * 9000) + 1000;

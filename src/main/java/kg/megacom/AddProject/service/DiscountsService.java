@@ -11,10 +11,10 @@ public interface DiscountsService {
 
     DiscountDto save(DiscountDto discountDto);
 
-    DiscountDto findByTvChannelAndMinDay(int days,Long id);
+    DiscountDto findByTvChannelAndMinDay(int days, Long id);
 
     DiscountDto findById(Long id);
 
-    DiscountDto update (DiscountDto discountDto);
+    DiscountDto update(DiscountDto discountDto);
 
 }

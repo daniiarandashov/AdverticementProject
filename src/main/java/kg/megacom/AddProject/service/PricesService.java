@@ -14,5 +14,5 @@ public interface PricesService {
 
     PricesDto findById(Long id);
 
-    PricesDto update (PricesDto pricesDto);
+    PricesDto update(PricesDto pricesDto);
 }

@@ -48,7 +48,7 @@ public class PricesServiceImpl implements PricesService {
         pricesDto1.setPrice(pricesDto.getPrice());
         pricesDto1.setEnd_date(pricesDto.getEnd_date());
         pricesDto1.setStart_date(pricesDto.getStart_date());
-        if(prices == null){
+        if (prices == null) {
             throw new RuntimeException("Not found");
         }
         prices = pricesRepo.save(PricesMapper.INSTANCE.toPrices(pricesDto1));

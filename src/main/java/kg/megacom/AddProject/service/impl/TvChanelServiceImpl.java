@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+
 @Service
 public class TvChanelServiceImpl implements TvChanelService {
 
@@ -27,7 +28,6 @@ public class TvChanelServiceImpl implements TvChanelService {
     }
 
 
-
     @Override
     public TvChanelDto save(TvChanelDto tvChanelDto, MultipartFile file) {
         Response response = fileServiceFeign.upload(file);
@@ -41,7 +41,7 @@ public class TvChanelServiceImpl implements TvChanelService {
     @Override
     public TvChanelDto findById(Long id) {
         TvChanel tvChanel = tvChanelRepo.findById(id).orElse(null);
-        if(tvChanel==null){
+        if (tvChanel == null) {
             throw new RuntimeException("Not found");
         }
         return TvChanelMapper.INSTANCE.toTvChanelDto(tvChanel);
@@ -50,7 +50,7 @@ public class TvChanelServiceImpl implements TvChanelService {
     @Override
     public TvChanelDto update(TvChanelDto tvChanelDto) { // 1
         TvChanel tvChanel = tvChanelRepo.findById(tvChanelDto.getId()).orElse(null);
-        if(tvChanel == null){
+        if (tvChanel == null) {
             throw new RuntimeException("Not found");
         }
         tvChanel.setLogo(tvChanelDto.getLogo());
@@ -61,7 +61,7 @@ public class TvChanelServiceImpl implements TvChanelService {
     @Override
     public TvChanelDto deactivate(Long id) {
         TvChanel tvChanel = tvChanelRepo.findById(id).orElse(null);
-        if(tvChanel == null){
+        if (tvChanel == null) {
             throw new RuntimeException("Not found");
         }
         TvChanelDto tvChanelDto = TvChanelMapper.INSTANCE.toTvChanelDto(tvChanel);

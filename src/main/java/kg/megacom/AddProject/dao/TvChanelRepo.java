@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface TvChanelRepo extends JpaRepository<TvChanel,Long> {
-    @Query(value = "SELECT * FROM tv_chanels t where t.is_active=true",nativeQuery = true)
+public interface TvChanelRepo extends JpaRepository<TvChanel, Long> {
+    @Query(value = "SELECT * FROM tv_chanels t where t.is_active=true", nativeQuery = true)
     List<TvChanel> findByIs_activeTrue();
 }
